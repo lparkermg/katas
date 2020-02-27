@@ -30,5 +30,12 @@ namespace Bowling.Tests
             var score = _scoringCalculator.Calculate("12 x 81 42 x 23 17 32 21 123");
             Assert.AreEqual(79, score);
         }
+
+        [Test]
+        public void BowlingCalculator_GivenUpperCaseStikes_ShouldReturnTheCorrectResult()
+        {
+            var score = _scoringCalculator.Calculate("12 X 81 42 X 23 17 32 21 123");
+            Assert.AreEqual(79, score);
+        }
     }
 }
