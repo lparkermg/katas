@@ -7,6 +7,7 @@ namespace Bowling.Core
     {
         public int Calculate(string results)
         {
+            results = results.ToLower();
             if (results == "x x x x x x x x x xxx")
             {
                 return 300;
