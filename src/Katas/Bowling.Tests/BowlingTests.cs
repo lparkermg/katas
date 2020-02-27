@@ -16,5 +16,12 @@ namespace Bowling.Tests
             var score = _scoringCalculator.Calculate(frames);
             Assert.AreEqual(expectedScore, score);
         }
+
+        [Test]
+        public void BowlingCalculator_GivenConsecutiveStrikes_ShouldReturn300()
+        {
+            var score = _scoringCalculator.Calculate("x x x x x x x x x xxx");
+            Assert.AreEqual(300, score);
+        }
     }
 }
