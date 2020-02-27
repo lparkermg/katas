@@ -23,5 +23,12 @@ namespace Bowling.Tests
             var score = _scoringCalculator.Calculate("x x x x x x x x x xxx");
             Assert.AreEqual(300, score);
         }
+
+        [Test]
+        public void BowlingCalculator_GivenAMixOfStrikesAndNumberScores_ShouldReturnTheCorrectResult()
+        {
+            var score = _scoringCalculator.Calculate("12 x 81 42 x 23 17 32 21 123");
+            Assert.AreEqual(79, score);
+        }
     }
 }
