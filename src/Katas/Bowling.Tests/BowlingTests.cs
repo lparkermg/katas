@@ -50,5 +50,13 @@ namespace Bowling.Tests
             var score = _scoringCalculator.Calculate("12 X 81 4/ 52 15 24 32 11 43");
             Assert.AreEqual(79, score);
         }
+
+        [Test]
+        public void BowlingCalculator_GivenFramesIncludingMisses_ShouldReturnTheCorrectResult()
+        {
+            var score = _scoringCalculator.Calculate("12 X 81 4/ 52 15 2- 32 11 43");
+            Assert.AreEqual(75, score);
+
+        }
     }
 }
