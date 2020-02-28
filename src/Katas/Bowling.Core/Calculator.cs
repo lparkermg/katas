@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.NetworkInformation;
 
 namespace Bowling.Core
@@ -22,14 +23,29 @@ namespace Bowling.Core
                     SecondScore = f.Length >= 2 ? f[1] : '0',
                     ThirdScore = f.Length == 3 ? f[2] : '0',
                 });
+
             var totalScore = 0;
             Frame? strikeFrame = null;
+            Frame? spareFrame = null;
             foreach (var frame in frames)
             {
+                if (frame.IsSpare)
+                {
+                    spareFrame = frame;
+                    continue;
+                }
+
                 if (frame.IsStrike)
                 {
                     strikeFrame = frame;
                     continue;
+                }
+
+                if (spareFrame.HasValue)
+                {
+                    totalScore += 10;
+                    totalScore += int.Parse(frame.FirstScore.ToString());
+                    spareFrame = null;
                 }
 
                 if (strikeFrame.HasValue)
@@ -41,9 +57,6 @@ namespace Bowling.Core
 
                 totalScore += frame.FrameScore;
             }
-
-            
-            var previousWasStrike = false;
             
             return totalScore;
         }

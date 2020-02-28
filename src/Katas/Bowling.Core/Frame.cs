@@ -9,6 +9,7 @@ namespace Bowling.Core
         public char ThirdScore { get; set; }
 
         public bool IsStrike => FirstScore == 'x';
+        public bool IsSpare => SecondScore == '/';
 
         public int FrameScore
         {
@@ -22,7 +23,7 @@ namespace Bowling.Core
                 var score = 0;
 
                 score += int.Parse(FirstScore.ToString());
-                score += int.Parse(SecondScore.ToString());
+                score += SecondScore == '/' ? 0 : int.Parse(SecondScore.ToString());
                 score += int.Parse(ThirdScore.ToString());
 
                 return score;
