@@ -22,12 +22,24 @@ namespace Bowling.Core
 
                 var score = 0;
 
-                score += int.Parse(FirstScore.ToString());
-                score += SecondScore == '/' ? 0 : int.Parse(SecondScore.ToString());
-                score += int.Parse(ThirdScore.ToString());
+                score += ScoreFromChar(FirstScore);
+                score += ScoreFromChar(SecondScore);
+                score += ScoreFromChar(ThirdScore);
 
                 return score;
             }
+        }
+
+        private int ScoreFromChar(char scoreChar)
+        {
+            if (scoreChar == '/' || scoreChar == '-')
+            {
+                return 0;
+            }
+
+            var score = int.Parse(scoreChar.ToString());
+
+            return score;
         }
     }
 }
