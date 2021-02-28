@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingKata.Entities;
+using System;
 
 namespace BankingKata
 {
@@ -6,7 +7,16 @@ namespace BankingKata
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Accounts!");
+
+            var account = new Account();
+
+            account.Deposit(500);
+            account.Withdraw(50);
+            account.Withdraw(425);
+            account.Withdraw(100);
+
+            Console.Write(account.PrintStatement());
         }
     }
 }
